@@ -63,3 +63,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Figaro for securely storing env variables
 gem "figaro"
+
+# Select2 for city dropdown
+gem "select2-rails"
+gem "jquery-rails"
+
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'

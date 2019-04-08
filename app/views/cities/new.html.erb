@@ -1,0 +1,14 @@
+<h1>New City</h1>
+
+<%= select_tag "type_selector", options_for_select(["Nombre Ciudad", "Geolocalización", "Código Postal"]) %>
+<div id='form_city'>
+  <%= render 'form_city', city: @city %>
+</div>
+<div id='form_geo'>
+  <%= render 'form_geo', city: @city %>
+</div>
+<div id='form_zip'>
+  <%= render 'form_zip', city: @city %>
+</div>
+
+<%= link_to 'Back', cities_path %>

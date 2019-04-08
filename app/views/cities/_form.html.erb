@@ -1,0 +1,17 @@
+<%= form_tag city_api_find_city_path(@city) do |form| %>
+  <% if city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+      <% city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= form.select "type_selector", options_for_select(["Nombre Ciudad", "Geolocalización", "Codigo Postal"]) %>
+    <%= form.submit %>
+    <div class="actions">
+  </div>
+<% end %>
