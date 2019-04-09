@@ -20,7 +20,7 @@
 
 (function($){
     "use strict";
-    $(document).on('ready', function(){
+    $(document).on('turbolinks:load', function(){
         $("#type_selector").select2({
             minimumResultsForSearch: -1,
             allowClear: true,

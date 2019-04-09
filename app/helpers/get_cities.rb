@@ -13,8 +13,6 @@ class GetCities
 
   def get_cities_by_query(city_query)
     url = URI.parse(URI.escape((@api_url % {type: @query_url, query: city_query.downcase})))
-    puts url
-
     {'cities': JSON.parse(Net::HTTP.get(url))}
   end
 
