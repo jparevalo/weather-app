@@ -49,6 +49,8 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.json
   def create
+    puts city_params
+    puts "AAAAAAAAA"
     @city = City.new(city_params)
 
     respond_to do |format|
@@ -94,6 +96,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.fetch(:city, {})
+      params.fetch(:city, {}).permit(:name, :country, :location_key)
     end
 end

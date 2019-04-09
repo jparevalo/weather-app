@@ -26,9 +26,10 @@
                 <td><%= city["Country"]["LocalizedName"] %></td>
                 <td><%= city["AdministrativeArea"]["LocalizedName"] %></td>
                 <td>
-                  <button type="button" class="btn btn-primary btn-sm" style="margin-top:5px;" >
-                    <i class="fa fa-plus-square" aria-hidden="true"></i><small> Guardar</small>
-                  </button>
+                  <% city_obj = {:city => {:name => city["LocalizedName"],
+                                          :country => city["Country"]["LocalizedName"],
+                                          :location_key => city["Key"]}}%>
+                  <%= link_to "Guardar", cities_path(city_obj), :method => :post %>
                 </td>
               </tr>
               <p></p>
