@@ -19,6 +19,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.row-centered {text-align:center;}
+.col-centered { display:inline-block; float:none; margin-right:-4px;}
+.navbar {
+  padding-top: 20px;
+}
+
+.navbar-weather {
+  background-image: url(asset-path("clouds.jpg"));
+  background-size:cover;
+  box-shadow: 0px 0px 10px 10px #322A9E;
+  border: none;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
