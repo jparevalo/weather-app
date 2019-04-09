@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @city.name %></h2>
+<h3><%= @city.country %></h3>
+<p>Código de locación: <%= @city.location_key %></p>
+
 <%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>

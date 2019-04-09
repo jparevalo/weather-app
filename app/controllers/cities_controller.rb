@@ -23,34 +23,47 @@ class CitiesController < ApplicationController
 
   # POST /cities/find_city_api
   def find_city_by_query
-    cities = GetCities.new().get_cities_by_query(params[:city_query])[:cities].first(20)
-    respond_to do |format|
-      format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities} }
+    cities = GetCities.new().get_cities_by_query(params[:city_query])[:cities]
+    if cities.key?("Message")
+      flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
+      redirect_to new_city_path
+    else
+      respond_to do |format|
+        format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities.first(20)} }
+      end
     end
   end
 
   # POST /cities/find_city_api
   def find_city_by_geolocation
     geolocation = params[:latitude] + "," + params[:longitude]
-    cities = GetCities.new().get_cities_by_geolocation(geolocation)[:cities].first(20)
-    respond_to do |format|
-      format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities} }
+    cities = GetCities.new().get_cities_by_geolocation(geolocation)[:cities]
+    if cities.key?("Message")
+      flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
+      redirect_to new_city_path
+    else
+      respond_to do |format|
+        format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities.first(20)} }
+      end
     end
   end
 
   # POST /cities/find_city_api
   def find_city_by_zip_code
-    cities = GetCities.new().get_cities_by_zip_code(params[:zip_code])[:cities].first(20)
-    respond_to do |format|
-      format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities} }
+    cities = GetCities.new().get_cities_by_zip_code(params[:zip_code])[:cities]
+    if cities.key?("Message")
+      flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
+      redirect_to new_city_path
+    else
+      respond_to do |format|
+        format.js { render :partial => 'cities/render_city_list_modal.js.erb', locals: {cities: cities.first(20)} }
+      end
     end
   end
 
   # POST /cities
   # POST /cities.json
   def create
-    puts city_params
-    puts "AAAAAAAAA"
     @city = City.new(city_params)
 
     respond_to do |format|

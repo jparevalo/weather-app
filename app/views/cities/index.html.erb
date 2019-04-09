@@ -1,22 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cities</h1>
+<h1>Ciudades</h1>
+
+<table class="table table-condensed" style="width: 50%">
+  <thead>
+  <tr>
+    <th>Ciudad</th>
+    <th>País</th>
+    <th>Código</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+        <tr>
+          <td><%= city.name %></td>
+          <td><%= city.country %></td>
+          <td><%= city.location_key %></td>
+          <td><%= link_to 'Show', city %> | <%= link_to 'Edit', edit_city_path(city) %> | <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <td><%= link_to 'Show', city %></td>
-        <td><%= link_to 'Edit', edit_city_path(city) %></td>
-        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
   </tbody>
 </table>
 
