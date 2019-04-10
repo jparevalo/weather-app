@@ -70,17 +70,17 @@
               <th>T° Mínima</th>
               <th>T° Máxima</th>
               <th>Viento</th>
-              <th>% Nubosidad</th>
+              <th>Nubosidad</th>
             </tr>
             </thead>
             <tbody>
               <% @forecast.forecasts.each do |day| %>
                   <tr>
                     <td><%= day.date.to_date %></td>
-                    <td><%= day.min_temperature %></td>
-                    <td><%= day.max_temperature %></td>
+                    <td><%= day.min_temperature %> °C</td>
+                    <td><%= day.max_temperature %> °C</td>
                     <td><%= day.wind_speed %> km/h (dir: <%= day.wind_direction %>)</td>
-                    <td><%= day.cloud_cover %></td>
+                    <td><%= day.cloud_cover %>%</td>
                   </tr>
               <% end %>
             </tbody>
