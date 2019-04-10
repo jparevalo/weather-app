@@ -38,11 +38,13 @@
           </tr>
           </thead>
           <tbody>
-          <% @forecast.forecasts.each do |day| %>
-              <tr>
-                <td></td>
-                <td><%= day %></td>
-              </tr>
+          <% if @forecast %>
+            <% @forecast.forecasts.each do |day| %>
+                <tr>
+                  <td></td>
+                  <td><%= day %></td>
+                </tr>
+            <% end %>
           <% end %>
           </tbody>
         </table>

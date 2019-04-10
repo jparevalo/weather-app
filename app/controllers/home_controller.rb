@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @forecast = []
+    @forecast = nil
   end
 
   def set_params
