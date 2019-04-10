@@ -23,8 +23,8 @@ class CitiesController < ApplicationController
 
   # POST /cities/find_city_api
   def find_city_by_query
-    cities = GetCities.new().get_cities_by_query(params[:city_query])[:cities]
-    if cities.key?("Message")
+    cities = GetCities.new().get_cities_by_query(params[:city_query])
+    if cities.is_a?(Hash) and cities.key?("Message")
       flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
       redirect_to new_city_path
     else
@@ -37,8 +37,8 @@ class CitiesController < ApplicationController
   # POST /cities/find_city_api
   def find_city_by_geolocation
     geolocation = params[:latitude] + "," + params[:longitude]
-    cities = GetCities.new().get_cities_by_geolocation(geolocation)[:cities]
-    if cities.key?("Message")
+    cities = GetCities.new().get_cities_by_geolocation(geolocation)
+    if cities.is_a?(Hash) and cities.key?("Message")
       flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
       redirect_to new_city_path
     else
@@ -50,8 +50,8 @@ class CitiesController < ApplicationController
 
   # POST /cities/find_city_api
   def find_city_by_zip_code
-    cities = GetCities.new().get_cities_by_zip_code(params[:zip_code])[:cities]
-    if cities.key?("Message")
+    cities = GetCities.new().get_cities_by_zip_code(params[:zip_code])
+    if cities.is_a?(Hash) and cities.key?("Message")
       flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
       redirect_to new_city_path
     else

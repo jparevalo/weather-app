@@ -1,0 +1,98 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<div class="row row-centered" style="margin-bottom: 20px; margin-top: 40px">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 style="font-weight: bold">Pronóstico a 5 días</h4>
+        <%= render 'city_selection_form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="margin-bottom: 150px">
+  <% if @forecast %>
+    <% @forecasts = @forecast.forecasts %>
+    <div class="row">
+      <div class="col-md-12">
+        <div align="center">
+          <h3 style="font-weight: bold">Resumen Prónostico de Temperatura</h3>
+        </div>
+        <div class="row row-centered" style="margin-top: 20px;">
+          <div class="col-md-6 col-centered">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <% max_temperature_map = @forecasts.map{|day| day.max_temperature.to_d} %>
+                <% min_temperature_map = @forecasts.map{|day| day.min_temperature.to_d} %>
+                <table class="table table-condensed table-bordered"  style="margin-top: 20px">
+                  <tbody>
+                    <tr>
+                      <td><b>Promedio Máxima: </b></td>
+                      <% max_avg = max_temperature_map.reduce(:+) / @forecasts.size %>
+                      <td><%= max_avg.to_i %> °C</td>
+                    </tr>
+                    <tr>
+                      <td><b>Promedio Mínima: </b></td>
+                      <% min_avg = min_temperature_map.reduce(:+) / @forecasts.size %>
+                      <td><%= min_avg.to_i %> °C</td>
+                    </tr>
+                    <tr>
+                      <td><b>Promedio Del Periodo: </b></td>
+                      <td><%= ((max_avg + min_avg) / 2).to_i %> °C</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-condensed table-bordered"  style="margin-top: 20px">
+                  <tbody>
+                  <tr>
+                    <td><b>Máxima Global: </b></td>
+                    <td><%= max_temperature_map.max %> °C</td>
+                  </tr>
+                  <tr>
+                    <td><b>Mínima Global: </b></td>
+                    <td><%= min_temperature_map.min %> °C</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div align="center">
+          <h3 style="font-weight: bold">Detalle Pronóstico</h3>
+        </div>
+        <div style="margin-top: 20px">
+          <table id="forecast-table" class="table table-striped table-bordered table-condensed display responsive no-wrap">
+            <thead>
+            <tr>
+              <th>Día</th>
+              <th>T° Mínima</th>
+              <th>T° Máxima</th>
+              <th>Viento</th>
+              <th>Nubosidad</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @forecast.forecasts.each do |day| %>
+                  <tr>
+                    <td><%= day.date.to_date %></td>
+                    <td><%= day.min_temperature %> °C</td>
+                    <td><%= day.max_temperature %> °C</td>
+                    <td><%= day.wind_speed %> km/h (dir: <%= day.wind_direction %>)</td>
+                    <td><%= day.cloud_cover %>%</td>
+                  </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+    $('#forecast-table').DataTable({
+        responsive: true
+    });
+</script>
