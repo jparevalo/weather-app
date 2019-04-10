@@ -1,0 +1,15 @@
+<div style="margin-top: 20px">
+  <%= form_for :city, url: home_update_path, method: :get do |f| %>
+      <div class="row row-centered">
+        <div class="col-md-12 col-centered">
+          <div class="">
+            <%= f.label :city_id, "Seleccione Ciudad: " %>
+            <%= f.select :city_id, City.all.map{|city| [city.to_s, city.id]} %>
+          </div>
+        </div>
+      </div>
+      <div class="center" style="margin-top: 20px">
+        <%= f.submit 'Aplicar'%>
+      </div>
+  <% end %>
+</div>

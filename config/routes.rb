@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   post 'cities/find_city_by_geolocation' => 'cities#find_city_by_geolocation', as: :find_city_geo_api
   post 'cities/find_city_by_zip_code' => 'cities#find_city_by_zip_code', as: :find_city_zip_api
 
-  root "cities#index"
+  get 'home/update', to: 'home#update'
+
+  root 'home#index'
 end
