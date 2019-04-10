@@ -1,0 +1,22 @@
+<%= form_tag(find_city_geo_api_path, method: 'post', remote: true) do %>
+  <% if city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+      <% city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <label for="latitude">Latitud</label>
+    <%= text_field_tag :latitude %>
+
+    <label for="longitude">Longitud</label>
+    <%= text_field_tag :longitude %>
+
+    <%= submit_tag %>
+    <div class="actions">
+  </div>
+<% end %>

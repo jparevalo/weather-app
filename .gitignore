@@ -1,3 +1,4 @@
+.idea/
 *.gem
 *.rbc
 /.config
@@ -9,7 +10,8 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-
+log/
+db/*.sqlite3
 # Used by dotenv library to load environment variables.
 # .env
 
@@ -48,3 +50,6 @@ build-iPhoneSimulator/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+# Ignore application configuration
+/config/application.yml

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: one
+  day_1: one
+  day_2: one
+  day_3: one
+  day_4: one
+  day_5: one
+
+two:
+  city: two
+  day_1: two
+  day_2: two
+  day_3: two
+  day_4: two
+  day_5: two

@@ -11,6 +11,38 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require select2
 //= require_tree .
+
+(function($){
+    "use strict";
+    $(document).on('turbolinks:load', function(){
+        $("#type_selector").select2({
+            minimumResultsForSearch: -1,
+            allowClear: true,
+            theme: "bootstrap"
+        });
+        $("#form_geo").hide();
+        $("#form_zip").hide();
+        $("#type_selector").change(function() {
+            $("#form_city").hide();
+            $("#form_geo").hide();
+            $("#form_zip").hide();
+            if($(this).find("option:selected").text() == "Código Postal"){
+                $("#form_zip").show();
+            }
+            else if($(this).find("option:selected").text() == "Geolocalización"){
+                $("#form_geo").show();
+            }
+            else{
+                $("#form_city").show();
+            }
+        });
+    });
+
+
+}(jQuery));

@@ -1,0 +1,42 @@
+<div class="modal fade" id="cityModal" tabindex="-1" role="dialog" aria-labelledby="cityModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h1 class="modal-title" id="cityModalLabel">
+          Guardar Nueva Ciudad
+        </h1>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Ciudad</th>
+              <th>País</th>
+              <th>Región</th>
+              <th>Guardar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for city in cities %>
+              <tr>
+                <td><%= city["LocalizedName"] %></td>
+                <td><%= city["Country"]["LocalizedName"] %></td>
+                <td><%= city["AdministrativeArea"]["LocalizedName"] %></td>
+                <td>
+                  <% city_obj = {:city => {:name => city["LocalizedName"],
+                                          :country => city["Country"]["LocalizedName"],
+                                          :location_key => city["Key"]}}%>
+                  <%= link_to "Guardar", cities_path(city_obj), :method => :post %>
+                </td>
+              </tr>
+              <p></p>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
