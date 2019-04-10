@@ -9,10 +9,10 @@ class HomeController < ApplicationController
 
   def update
     city = City.find(set_params[:city_id])
-    previous_forecast = CityForecast.where(city: city.id)
-    if previous_forecast.empty? or previous_forecast.updated_at < 1.day.ago
-      @forecast = GetForecast.new().get_5_day_forecast(city.location_key)["DailyForecasts"]
-      # TODO: Create forecast and cityforecast objects
+    previous_forecast = CityForecast.where(city: city.id).last
+    if previous_forecast.nil? or previous_forecast.updated_at < 1.day.ago
+      forecast_json = GetForecast.new().get_5_day_forecast(city.location_key)["DailyForecasts"]
+      @forecast = CityForecastFactory.new().create_from_json(city, forecast_json)
     else
       @forecast = previous_forecast
     end
