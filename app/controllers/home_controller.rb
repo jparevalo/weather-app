@@ -11,8 +11,12 @@ class HomeController < ApplicationController
     city = City.find(set_params[:city_id])
     previous_forecast = CityForecast.where(city: city.id).last
     if previous_forecast.nil? or previous_forecast.updated_at.to_date < Date.today()
-      forecast_json = GetForecast.new().get_5_day_forecast(city.location_key)["DailyForecasts"]
-      @forecast = CityForecastFactory.new().create_from_json(city, forecast_json)
+      forecast_json = GetForecast.new().get_5_day_forecast(city.location_key)
+      if forecast_json.is_a?(Hash) and forecast_json.key?("Message")
+        flash[:danger] = 'Error de API: "' + forecast_json["Message"] + '"'
+      else
+        @forecast = CityForecastFactory.new().create_from_json(city, forecast_json["DailyForecasts"])
+      end
     else
       @forecast = previous_forecast
     end
