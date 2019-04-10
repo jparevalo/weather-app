@@ -6,7 +6,7 @@ class GetForecast
   def initialize
     api_key = Figaro.env.ACCUWEATHER_API_KEY
     query_url = Figaro.env.ACCUWEATHER_FORECAST_URL
-    @api_url = "#{query_url}%{location_key}?details=true&apikey=#{api_key}"
+    @api_url = "#{query_url}%{location_key}?details=true&metric=true&apikey=#{api_key}"
   end
 
   def get_5_day_forecast(location_key)
