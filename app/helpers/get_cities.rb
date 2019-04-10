@@ -13,19 +13,17 @@ class GetCities
 
   def get_cities_by_query(city_query)
     url = URI.parse(URI.escape((@api_url % {type: @query_url, query: city_query.downcase})))
-    {'cities': JSON.parse(Net::HTTP.get(url))}
+    ApiRequest.new().request(url)
   end
 
   def get_cities_by_zip_code(zip_code)
     url = URI.parse(URI.escape((@api_url % {type: @zip_url, query: zip_code.downcase})))
-    puts url
-    {'cities': JSON.parse(Net::HTTP.get(url))}
+    ApiRequest.new().request(url)
   end
 
   def get_cities_by_geolocation(geolocation)
     url = URI.parse(URI.escape((@api_url % {type: @geo_url, query: geolocation.downcase})))
-    puts url
-    {'cities': JSON.parse(Net::HTTP.get(url))}
+    ApiRequest.new().request(url)
   end
 
 end
