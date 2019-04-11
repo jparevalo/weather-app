@@ -21,7 +21,6 @@ class CitiesController < ApplicationController
   def edit
   end
 
-  # POST /cities/find_city_api
   def find_city_by_query
     cities = GetCities.new().get_cities_by_query(params[:city_query])
     if cities.is_a?(Hash) and cities.key?("Message")
@@ -34,7 +33,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # POST /cities/find_city_api
   def find_city_by_geolocation
     geolocation = params[:latitude] + "," + params[:longitude]
     cities = GetCities.new().get_cities_by_geolocation(geolocation)
@@ -48,7 +46,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # POST /cities/find_city_api
   def find_city_by_zip_code
     cities = GetCities.new().get_cities_by_zip_code(params[:zip_code])
     if cities.is_a?(Hash) and cities.key?("Message")
