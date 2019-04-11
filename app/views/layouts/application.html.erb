@@ -30,9 +30,13 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <% if controller_name != "cities" %>
-                    <%= link_to cities_path do %>
-                        <h4 style="color:white">Ciudades</h4>
+                    <%= link_to cities_path, :class => 'navbar_link' do %>
+                        <h2 style="color:white">Ciudades</h2>
                     <% end %>
+                <% else %>
+                  <%= link_to :root, :class => 'navbar_link' do %>
+                      <h2 style="color:white">Pronóstico</h2>
+                  <% end %>
                 <% end %>
               </li>
             </ul>
