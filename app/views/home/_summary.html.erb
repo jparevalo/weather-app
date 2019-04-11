@@ -1,0 +1,53 @@
+<% if @forecast %>
+  <div align="center">
+    <h1>PRONÓSTICO A 5 DÍAS PARA <b><%= @forecast.city.to_s.upcase %></b></h1>
+  </div>
+  <% @forecasts = @forecast.forecasts %>
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+      <div align="center">
+        <h3 style="font-weight: bold">Resumen Prónostico de Temperatura</h3>
+      </div>
+      <div class="row row-centered" style="margin-top: 20px;">
+        <div class="col-md-6 col-centered">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <% max_temperature_map = @forecasts.map{|day| day.max_temperature.to_d} %>
+              <% min_temperature_map = @forecasts.map{|day| day.min_temperature.to_d} %>
+              <table class="table table-condensed table-bordered"  style="margin-top: 20px">
+                <tbody>
+                <tr>
+                  <td><b>Promedio Máxima: </b></td>
+                  <% max_avg = max_temperature_map.reduce(:+) / @forecasts.size %>
+                  <td><%= max_avg.to_i %> °C</td>
+                </tr>
+                <tr>
+                  <td><b>Promedio Mínima: </b></td>
+                  <% min_avg = min_temperature_map.reduce(:+) / @forecasts.size %>
+                  <td><%= min_avg.to_i %> °C</td>
+                </tr>
+                <tr>
+                  <td><b>Promedio Del Periodo: </b></td>
+                  <td><%= ((max_avg + min_avg) / 2).to_i %> °C</td>
+                </tr>
+                </tbody>
+              </table>
+              <table class="table table-condensed table-bordered"  style="margin-top: 20px">
+                <tbody>
+                <tr>
+                  <td><b>Máxima Global: </b></td>
+                  <td><%= max_temperature_map.max %> °C</td>
+                </tr>
+                <tr>
+                  <td><b>Mínima Global: </b></td>
+                  <td><%= min_temperature_map.min %> °C</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

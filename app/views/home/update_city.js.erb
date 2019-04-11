@@ -1,0 +1,3 @@
+$('#summary-partial').html("<%= escape_javascript(render partial: 'summary', :locals => { forecast: @forecast }) %>");
+$('#chart-partial').html("<%= escape_javascript(render partial: 'chart', :locals => { forecast: @forecast }) %>");
+$('#detail-partial').html("<%= escape_javascript(render partial: 'detail', :locals => { forecast: @forecast }) %>");

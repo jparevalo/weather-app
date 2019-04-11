@@ -14,6 +14,11 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require activestorage
+//= require Chart.bundle
+//= require highcharts
+//= require chartkick
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
 //= require turbolinks
 //= require select2
 //= require_tree .

@@ -70,3 +70,10 @@ gem "jquery-rails"
 
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
+
+# Chartkick and highcharts for pretty JS charts
+gem "chartkick"
+gem "highcharts-rails"
+
+# Datatables for pagination and excel export
+gem 'jquery-datatables-rails', '~> 3.4.0'

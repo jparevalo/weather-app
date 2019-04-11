@@ -1,0 +1,41 @@
+<% if @forecast %>
+  <% @forecasts = @forecast.forecasts %>
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+      <div align="center">
+        <% @highcharts_data = @forecasts.map {|day| [day.date.to_date(), day.max_temperature]} %>
+        <% @highcharts_colors = @forecasts.map {|day| day.get_cloud_cover_color } %>
+        <div align="center">
+          <h3 style="font-weight: bold">Gráfico de Temperatura Máxima</h3>
+        </div>
+        <div class="row row-centered" style="margin-top: 20px;">
+          <div class="col-md-9">
+            <%= column_chart @highcharts_data, suffix:" °C", colors: @highcharts_colors.pluck(:color),
+                             adapter: "highcharts", library: {"plotOptions": {"series": {"colorByPoint": true }}} %>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div align="center">
+                  <h4 style="font-weight: bold">Leyenda</h4>
+                </div>
+                <% max_temperature_map = @forecasts.map{|day| day.max_temperature.to_d} %>
+                <% min_temperature_map = @forecasts.map{|day| day.min_temperature.to_d} %>
+                <table class="table" style="margin-top: 20px; table-layout: fixed; border-collapse:separate; border-spacing:5px;">
+                  <tbody>
+                  <% for color in @highcharts_colors.uniq.sort_by {|col| col[:legend]} %>
+                      <tr>
+                        <td style="border-top: none; background-color: <%= color[:color] %>"></td>
+                        <td style="border-top: none;"><%= color[:legend] %> Nubosidad</td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
