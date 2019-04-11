@@ -28,16 +28,6 @@ class CitiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_city_url(@city)
-    assert_response :success
-  end
-
-  test "should update city" do
-    patch city_url(@city), params: { city: {  } }
-    assert_redirected_to city_url(@city)
-  end
-
   test "should destroy city" do
     assert_difference('City.count', -1) do
       delete city_url(@city)

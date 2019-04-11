@@ -3,8 +3,12 @@ class CityForecastFactory
   end
 
   def create_from_json(city, forecast_payload)
-    forecasts = create_forecasts(forecast_payload)
-    city_forecast = create_city_forecast(city, forecasts)
+    begin
+      forecasts = create_forecasts(forecast_payload)
+      city_forecast = create_city_forecast(city, forecasts)
+    rescue NoMethodError
+      raise(RuntimeError)
+    end
 
     city_forecast
   end

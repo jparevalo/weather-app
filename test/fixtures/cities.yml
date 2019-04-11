@@ -3,9 +3,9 @@
 one:
   name: MyString
   country: MyString
-  locationKey: MyString
+  location_key: MyString
 
 two:
   name: MyString
   country: MyString
-  locationKey: MyString
+  location_key: MyString
