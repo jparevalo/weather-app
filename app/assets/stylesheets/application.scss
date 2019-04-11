@@ -32,6 +32,16 @@
   border: none;
 }
 
+a.navbar_link:hover {
+  text-decoration: none;
+  background-color: transparent !important;
+  color: orange !important;
+}
+a.navbar_link:hover h2{
+  color: #F14A00 !important;
+}
+
+
 .field_with_errors {
   padding: 2px;
   background-color: red;

@@ -7,5 +7,6 @@ class ApiRequest
 
   def request(url)
     response = JSON.parse(Net::HTTP.get(url))
+
   end
 end

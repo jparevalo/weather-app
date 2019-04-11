@@ -4,7 +4,17 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 style="font-weight: bold">Pronóstico a 5 días</h4>
-        <%= render 'city_selection_form' %>
+        <% if !City.any? %>
+          <%= render 'city_selection_form' %>
+        <% else %>
+            <p>
+              Aún no se han registrado ciudades. Debes
+              <%= link_to new_city_path do %>
+                registrar una nueva ciudad
+              <% end %>
+               para consultar el pronóstico.
+            </p>
+        <% end %>
       </div>
     </div>
   </div>
