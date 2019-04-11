@@ -20,7 +20,8 @@ class HomeController < ApplicationController
     else
       @forecast = previous_forecast
     end
-
-    render :index
+    respond_to do |format|
+      format.js { render 'home/update_city.js.erb', locals: {forecast: @forecast} }
+    end
   end
 end
