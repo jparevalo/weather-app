@@ -1,24 +1,13 @@
-# README
+# WEATHER APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails application for visualizing weather forecast for various cities around the world
 
-Things you may want to cover:
+On this app you will be able to:
 
-* Ruby version
+* Save Cities in order to visualize their forecast info
 
-* System dependencies
+* Visualize a 5-day forecast for a determined city
 
-* Configuration
+* See current wind conditions of the selected city
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Visualize charts for temperature and cloud cover percentage
