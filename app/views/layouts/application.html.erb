@@ -10,6 +10,46 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-static-top navbar-weather" style="line-height: 50px;">
+      <div class="container-fluid">
+        <div class="navbar-header" style="margin-bottom: 11px">
+          <h2 style="color:white;">Weather App</h2>
+          <div style="padding: 0px; margin: 0px">
+            <p style="display:inline-block; color: white; font-size: 10px">Powered by: </p>
+            <img style="display: inline-block" height="15px" src="<%= asset_path( 'accuweather.png' ) %>" />
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <nav style="line-height: 70px;">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <% if controller_name != "cities" %>
+                    <%= link_to cities_path, :class => 'navbar_link' do %>
+                        <h2 style="color:white">Ciudades</h2>
+                    <% end %>
+                <% else %>
+                  <%= link_to :root, :class => 'navbar_link' do %>
+                      <h2 style="color:white">Pronóstico</h2>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </nav>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag :div, class: "alert alert-#{message_type}" do -%>
+          <%= message %>
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <% end -%>
+    <% end %>
     <%= yield %>
   </body>
 </html>

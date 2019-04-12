@@ -1,0 +1,34 @@
+<div id="cityModalContent">
+</div>
+
+<div class="row row-centered" style="margin-bottom: 20px; margin-top: 40px">
+  <div class="col-md-6 col-centered">
+    <h1>Agregar Nueva Ciudad</h1>
+  </div>
+</div>
+
+<div class="row row-centered">
+  <div class="col-md-10 col-centered">
+    <div style="margin-bottom:30px">
+      <p>Para agregar una nueva ciudad, seleccione un método de búsqueda y rellene los datos correpsondientes.</p>
+      <div class="row row-centered" style="margin: 40px;">
+          <%= select_tag "type_selector", options_for_select(["Nombre Ciudad", "Geolocalización", "Código Postal"]) %>
+      </div>
+      <div id='form_city'>
+        <%= render 'form_city', city: @city %>
+      </div>
+      <div id='form_geo'>
+        <%= render 'form_geo', city: @city %>
+      </div>
+      <div id='form_zip'>
+        <%= render 'form_zip', city: @city %>
+      </div>
+    </div>
+    <%= link_to 'Volver', cities_path, class: "btn btn-default" %>
+  </div>
+</div>
+<br>
+
+
+
+

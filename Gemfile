@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.3'
+ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Heroku
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,3 +60,20 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Figaro for securely storing env variables
+gem "figaro"
+
+# Select2 for city dropdown
+gem "select2-rails"
+gem "jquery-rails"
+
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
+
+# Chartkick and highcharts for pretty JS charts
+gem "chartkick"
+gem "highcharts-rails"
+
+# Datatables for pagination and excel export
+gem 'jquery-datatables-rails', '~> 3.4.0'

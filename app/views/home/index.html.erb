@@ -1,0 +1,36 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<div class="row row-centered" style="margin-bottom: 20px; margin-top: 40px">
+  <div class="col-md-6 col-centered">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 style="font-weight: bold">Pronóstico a 5 días</h4>
+        <% if City.any? %>
+          <%= render 'city_selection_form' %>
+        <% else %>
+            <p>
+              Aún no se han registrado ciudades. Debes
+              <%= link_to new_city_path do %>
+                registrar una nueva ciudad
+              <% end %>
+               para consultar el pronóstico.
+            </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="margin-bottom: 150px">
+  <div id="summary-partial">
+    <%= render 'summary', locals: {forecast: @forecast} %>
+  </div>
+  <div id="chart-partial">
+    <%= render 'chart', locals: {forecast: @forecast} %>
+  </div>
+  <div id="wind-partial">
+    <%= render 'wind', locals: {wind_direction: @wind_direction, wind_speed: @wind_speed} %>
+  </div>
+  <div id="detail-partial">
+    <%= render 'detail', locals: {forecast: @forecast} %>
+  </div>
+</div>

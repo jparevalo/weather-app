@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-04-07 18:08:19
+  max_temperature: 1
+  min_temperature: 1
+  wind_direction: MyString
+  wind_speed: 1
+  cloud_cover: 1
+
+two:
+  date: 2019-04-07 18:08:19
+  max_temperature: 1
+  min_temperature: 1
+  wind_direction: MyString
+  wind_speed: 1
+  cloud_cover: 1

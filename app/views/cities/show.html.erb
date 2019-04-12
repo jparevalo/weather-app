@@ -1,0 +1,22 @@
+<h2></h2>
+
+
+
+<div id="cityModalContent">
+</div>
+
+<div class="row row-centered" style="margin-bottom: 20px; margin-top: 40px">
+  <div class="col-md-6 col-centered">
+    <h1><b><%= @city.name %></b></h1>
+    <h3><%= @city.country %></h3>
+
+    <p style="margin-bottom: 30px">Código de locación: <%= @city.location_key %></p>
+
+    <%= link_to 'Volver', cities_path, class: "btn btn-default" %>
+  </div>
+</div>
+
+
+
+
+

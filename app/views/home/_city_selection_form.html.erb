@@ -1,0 +1,14 @@
+<div style="margin-top: 20px">
+  <%= form_for :city, url: home_update_path, remote: true, method: :get do |f| %>
+      <div class="row row-centered">
+        <div class="col-md-12 col-centered">
+          <div class="">
+            <%= f.select :city_id, City.all.map{|city| [city.to_s, city.id]}, class: 'js-searchable' %>
+          </div>
+        </div>
+      </div>
+      <div class="center" style="margin-top: 20px">
+        <%= f.submit 'Aplicar', class: "btn btn-success" %>
+      </div>
+  <% end %>
+</div>

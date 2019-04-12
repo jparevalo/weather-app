@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :cities
+
+  post 'cities/find_city_by_query' => 'cities#find_city_by_query', as: :find_city_query_api
+  post 'cities/find_city_by_geolocation' => 'cities#find_city_by_geolocation', as: :find_city_geo_api
+  post 'cities/find_city_by_zip_code' => 'cities#find_city_by_zip_code', as: :find_city_zip_api
+
+  get 'home/update', to: 'home#update'
+
+  root 'home#index'
 end
