@@ -1,1 +1,1 @@
-$('#wind-partial').html("<%= escape_javascript(render partial: 'wind', :locals => { wind_direction: @wind_direction, wind_speed: @wind_speed }) %>");
+$('#wind-partial').html("<%= escape_javascript(render partial: 'wind', :locals => { wind_direction: @wind_direction, wind_speed: @wind_speed, city_id: @city_id }) %>");

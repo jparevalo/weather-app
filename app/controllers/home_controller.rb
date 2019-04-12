@@ -22,8 +22,9 @@ class HomeController < ApplicationController
     end
     @wind_direction = @forecast.forecasts[0].wind_direction
     @wind_speed = @forecast.forecasts[0].wind_speed
+    @city_id = city.id
     respond_to do |format|
-      format.js { render 'home/update_city.js.erb', locals: {forecast: @forecast, wind_direction: @wind_direction, wind_speed: @wind_speed} }
+      format.js { render 'home/update_city.js.erb', locals: {forecast: @forecast, wind_direction: @wind_direction, wind_speed: @wind_speed, city_id: @city_id} }
     end
   end
 
@@ -33,11 +34,12 @@ class HomeController < ApplicationController
     if forecast_json.is_a?(Hash) and forecast_json.key?("Message")
       flash[:danger] = 'Error de API: "' + forecast_json["Message"] + '"'
     else
-      @wind_direction = forecast_json["Wind"]["Direction"]["Localized"]
-      @wind_speed = forecast_json["Wind"]["Speed"]["Metric"]["Value"]
+      @wind_direction = forecast_json[0]["Wind"]["Direction"]["Localized"]
+      @wind_speed = forecast_json[0]["Wind"]["Speed"]["Metric"]["Value"]
+      @city_id = city.id
     end
     respond_to do |format|
-      format.js { render 'home/update_wind.js.erb', locals: {wind_direction: @wind_direction, wind_speed: @wind_speed} }
+      format.js { render 'home/update_wind.js.erb', locals: {wind_direction: @wind_direction, wind_speed: @wind_speed, city_id: @city_id } }
     end
   end
 end

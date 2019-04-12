@@ -26,20 +26,29 @@
 (function($){
     "use strict";
     $(document).on('turbolinks:load', function(){
+        // Alert fade out time
         $(".alert" ).fadeOut(4000);
+
+        // Selector for city query type
         $("#type_selector").select2({
             minimumResultsForSearch: -1,
             allowClear: true,
             width: 300,
             theme: "bootstrap"
         });
+
+        // Selecctor for city in index view
         $("#city_city_id").select2({
             allowClear: true,
             width: 300,
             theme: "bootstrap"
         });
+
+        // Automaticaly hide geolocation and zip code forms
         $("#form_geo").hide();
         $("#form_zip").hide();
+
+        // Change active form based on selected choice
         $("#type_selector").change(function() {
             $("#form_city").hide();
             $("#form_geo").hide();
@@ -54,19 +63,28 @@
                 $("#form_city").show();
             }
         });
+
+        // Forecast data table
         $('#forecast-table').DataTable({
             responsive: true,
             searching: false,
             paginate: false
         });
+
+        // City list table
         $('#city-table').DataTable({
             responsive: true,
             language: {
-                "lengthMenu": "Mostrar _MENU_ filas por página",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "No existen ciudades registradas",
-                "infoFiltered": "(filtrado de _MAX_ ciudades en total)"
+                lengthMenu: "Mostrar _MENU_ filas por página",
+                zeroRecords: "No se encontraron resultados",
+                info: "Mostrando página _PAGE_ de _PAGES_",
+                infoEmpty: "No existen ciudades registradas",
+                infoFiltered: "(filtrado de _MAX_ ciudades en total)",
+                search: "Buscar:",
+                paginate: {
+                    previous: "Anterior",
+                    next: "Siguiente"
+                }
             }
         });
     });
