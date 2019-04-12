@@ -30,6 +30,12 @@
         $("#type_selector").select2({
             minimumResultsForSearch: -1,
             allowClear: true,
+            width: 300,
+            theme: "bootstrap"
+        });
+        $("#city_city_id").select2({
+            allowClear: true,
+            width: 300,
             theme: "bootstrap"
         });
         $("#form_geo").hide();
@@ -52,6 +58,9 @@
             responsive: true,
             searching: false,
             paginate: false
+        });
+        $('#city-table').DataTable({
+            responsive: true,
         });
     });
 
