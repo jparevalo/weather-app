@@ -1,0 +1,40 @@
+module HomeHelper
+  def get_wind_direction_image_path(wind_direction)
+    path = ""
+    case wind_direction
+      when "N"
+        path = "wind-n.png"
+      when "NNE"
+        path = "wind-nne.png"
+      when "NE"
+        path = "wind-ne.png"
+      when "ENE"
+        path = "wind-ene.png"
+      when "E"
+        path = "wind-e.png"
+      when "ESE"
+        path = "wind-ese.png"
+      when "SE"
+        path = "wind-se.png"
+      when "SSE"
+        path = "wind-sse.png"
+      when "S"
+        path = "wind-s.png"
+      when "SSO"
+        path = "wind-sso.png"
+      when "SO"
+        path = "wind-so.png"
+      when "OSO"
+        path = "wind-oso.png"
+      when "O"
+        path = "wind-o.png"
+      when "ONO"
+        path = "wind-ono.png"
+      when "NO"
+        path = "wind-no.png"
+      when "NNO"
+        path = "wind-nno.png"
+    end
+    path
+  end
+end
