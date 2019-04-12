@@ -48,6 +48,11 @@
                 $("#form_city").show();
             }
         });
+        $('#forecast-table').DataTable({
+            responsive: true,
+            searching: false,
+            paginate: false
+        });
     });
 
 
