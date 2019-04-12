@@ -61,6 +61,13 @@
         });
         $('#city-table').DataTable({
             responsive: true,
+            language: {
+                "lengthMenu": "Mostrar _MENU_ filas por página",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen ciudades registradas",
+                "infoFiltered": "(filtrado de _MAX_ ciudades en total)"
+            }
         });
     });
 
