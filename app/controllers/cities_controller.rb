@@ -35,7 +35,7 @@ class CitiesController < ApplicationController
 
   def find_city_by_geolocation
     geolocation = params[:latitude] + "," + params[:longitude]
-    cities = GetCities.new().get_cities_by_geolocation(geolocation)
+    cities = [GetCities.new().get_cities_by_geolocation(geolocation)]
     if cities.is_a?(Hash) and cities.key?("Message")
       flash[:danger] = 'Error de API: "' + cities["Message"] + '"'
       redirect_to new_city_path
@@ -65,7 +65,8 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to @city, notice: 'City was successfully created.' }
+        flash[:success] = 'Ciudad Creada Exitosamente'
+        format.html { redirect_to @city }
         format.json { render :show, status: :created, location: @city }
       else
         format.html { render :new }
@@ -93,7 +94,8 @@ class CitiesController < ApplicationController
   def destroy
     @city.destroy
     respond_to do |format|
-      format.html { redirect_to cities_url, notice: 'City was successfully destroyed.' }
+      flash[:success] = 'Ciudad Eliminada Exitosamente'
+      format.html { redirect_to cities_url }
       format.json { head :no_content }
     end
   end

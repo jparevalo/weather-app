@@ -44,8 +44,11 @@
         </div>
       </div>
     </nav>
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag :div, class: "alert alert-#{message_type}" do -%>
+          <%= message %>
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <% end -%>
     <% end %>
     <%= yield %>
   </body>

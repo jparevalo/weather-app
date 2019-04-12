@@ -1,7 +1,9 @@
 <div id="cityModalContent">
 </div>
 
-<h1>New City</h1>
+<h1>Agregar Nueva Ciudad</h1>
+
+<p>Para agregar una nueva ciudad, seleccione un método de búsqueda y rellene los datos correpsondientes.</p>
 
 <%= select_tag "type_selector", options_for_select(["Nombre Ciudad", "Geolocalización", "Código Postal"]) %>
 <div id='form_city'>
@@ -14,4 +16,4 @@
   <%= render 'form_zip', city: @city %>
 </div>
 
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Volver', cities_path %>

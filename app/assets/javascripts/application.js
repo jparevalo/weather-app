@@ -26,6 +26,7 @@
 (function($){
     "use strict";
     $(document).on('turbolinks:load', function(){
+        $(".alert" ).fadeOut(4000);
         $("#type_selector").select2({
             minimumResultsForSearch: -1,
             allowClear: true,

@@ -17,7 +17,7 @@
           <td><%= city.name %></td>
           <td><%= city.country %></td>
           <td><%= city.location_key %></td>
-          <td><%= link_to 'Show', city %> | <%= link_to 'Edit', edit_city_path(city) %> | <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Ver', city %> | <%= link_to 'Eliminar', city, method: :delete, data: { confirm: 'Seguro que desea eliminar la ciudad?' } %></td>
         </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New City', new_city_path %>
+<%= link_to 'Agregar Nueva Ciudad', new_city_path %>
