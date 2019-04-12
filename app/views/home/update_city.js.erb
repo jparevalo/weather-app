@@ -1,3 +1,4 @@
 $('#summary-partial').html("<%= escape_javascript(render partial: 'summary', :locals => { forecast: @forecast }) %>");
 $('#chart-partial').html("<%= escape_javascript(render partial: 'chart', :locals => { forecast: @forecast }) %>");
 $('#detail-partial').html("<%= escape_javascript(render partial: 'detail', :locals => { forecast: @forecast }) %>");
+$('#wind-partial').html("<%= escape_javascript(render partial: 'wind', :locals => { wind_direction: @wind_direction, wind_speed: @wind_speed, city_id: @city_id }) %>");

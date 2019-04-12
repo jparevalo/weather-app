@@ -27,15 +27,10 @@
   <div id="chart-partial">
     <%= render 'chart', locals: {forecast: @forecast} %>
   </div>
+  <div id="wind-partial">
+    <%= render 'wind', locals: {wind_direction: @wind_direction, wind_speed: @wind_speed} %>
+  </div>
   <div id="detail-partial">
     <%= render 'detail', locals: {forecast: @forecast} %>
   </div>
 </div>
-
-<script>
-    $('#forecast-table').DataTable({
-        responsive: true,
-        searching: false,
-        paginate: false
-    });
-</script>

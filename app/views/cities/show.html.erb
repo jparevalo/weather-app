@@ -1,8 +1,22 @@
-<p id="notice"><%= notice %></p>
+<h2></h2>
 
-<h2><%= @city.name %></h2>
-<h3><%= @city.country %></h3>
-<p>Código de locación: <%= @city.location_key %></p>
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+
+<div id="cityModalContent">
+</div>
+
+<div class="row row-centered" style="margin-bottom: 20px; margin-top: 40px">
+  <div class="col-md-6 col-centered">
+    <h1><b><%= @city.name %></b></h1>
+    <h3><%= @city.country %></h3>
+
+    <p style="margin-bottom: 30px">Código de locación: <%= @city.location_key %></p>
+
+    <%= link_to 'Volver', cities_path, class: "btn btn-default" %>
+  </div>
+</div>
+
+
+
+
+
